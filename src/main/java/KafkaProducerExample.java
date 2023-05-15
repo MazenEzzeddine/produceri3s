@@ -33,9 +33,9 @@ public class KafkaProducerExample {
 
         Instant inst = Instant.now();
 
-        while (Duration.between(inst, Instant.now()).getSeconds() < 5 * 60) {
+        while (Duration.between(inst, Instant.now()).getSeconds() < 10 * 60) {
 
-            for (int i = 0; i <250 ; i++) {
+            for (int i = 0; i <85; i++) {
                 Customer custm = new Customer(rnd.nextInt(), UUID.randomUUID().toString());
                 KafkaProducerExample.
                         producer.send(new ProducerRecord<String, Customer>(KafkaProducerExample.config.getTopic(),
