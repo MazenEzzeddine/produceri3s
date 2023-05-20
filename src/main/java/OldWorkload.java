@@ -15,7 +15,7 @@ public class OldWorkload {
 
     public static void  startWorkload() throws IOException, URISyntaxException, InterruptedException {
 
-        final Logger log = LogManager.getLogger(KafkaProducerExample.class);
+        final Logger log = LogManager.getLogger(OldWorkload.class);
 
         Workload wrld = new Workload();
 
