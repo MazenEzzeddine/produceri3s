@@ -31,21 +31,24 @@ public class KafkaProducerExample {
         //log.info("Sending {} messages ...", config.getMessageCount());
 
 
-        Instant inst = Instant.now();
 
+         startServer();
+         OldWorkload.startWorkload();
+
+        /*Instant inst = Instant.now();
         while (Duration.between(inst, Instant.now()).getSeconds() < 10 * 60) {
-
-            for (int i = 0; i <85; i++) {
+            for (int i = 0; i <90; i++) {
                 Customer custm = new Customer(rnd.nextInt(), UUID.randomUUID().toString());
                 KafkaProducerExample.
                         producer.send(new ProducerRecord<String, Customer>(KafkaProducerExample.config.getTopic(),
                                 null, null, UUID.randomUUID().toString(), custm));
-
             }
-
             Thread.sleep(1000);
+        }*/
+    }
 
-
-        }
+    private static void startServer() {
+        Thread server = new Thread  (new ServerThread());
+        server.start();
     }
 }
