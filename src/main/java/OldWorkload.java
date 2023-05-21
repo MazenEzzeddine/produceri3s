@@ -10,9 +10,7 @@ import java.util.UUID;
 
 public class OldWorkload {
 
-
     static float ArrivalRate;
-
     public static void  startWorkload() throws IOException, URISyntaxException, InterruptedException {
 
         final Logger log = LogManager.getLogger(OldWorkload.class);
