@@ -28,7 +28,10 @@ public class KafkaProducerExample {
         int delay = config.getDelay();
         producer = new KafkaProducer<String, Customer>(props);
          startServer();
-         OldWorkload.startWorkload();
+        //OldWorkload.startWorkload();
+
+        OldWorkloadSkewed.startWorkload();
+        //ConstantWorkload.startWorkload();
     }
 
     private static void startServer() {

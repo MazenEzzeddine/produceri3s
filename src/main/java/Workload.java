@@ -29,6 +29,8 @@ public class Workload {
     private void loadWorkload() throws IOException, URISyntaxException {
         ClassLoader CLDR = this.getClass().getClassLoader();
         InputStream inputStream = CLDR.getResourceAsStream("defaultArrivalRatesm.csv");
+        //InputStream inputStream = CLDR.getResourceAsStream("2h.csv");
+
         //InputStream inputStream = CLDR.getResourceAsStream("slow.csv");
         //InputStream inputStream = CLDR.getResourceAsStream("200p.csv");
         List<String> out = new ArrayList<>();
@@ -40,9 +42,9 @@ public class Workload {
         }
         for (String line : out) {
             String[] workFields = line.split(cvsSplitBy);
-            inputXPointValue = Double.parseDouble(workFields[0]);
+            //inputXPointValue = Double.parseDouble(workFields[0]);
             targetXPointValue = Double.parseDouble(workFields[1]);
-            datax.add(inputXPointValue);
+            datax.add(0d);
             datay.add(targetXPointValue);
         }
     }
