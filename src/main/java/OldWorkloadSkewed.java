@@ -8,16 +8,11 @@ import java.util.Random;
 import java.util.UUID;
 
 public class OldWorkloadSkewed {
-
     static float ArrivalRate;
     public static void  startWorkload() throws IOException, URISyntaxException, InterruptedException {
 
         final Logger log = LogManager.getLogger(OldWorkloadSkewed.class);
-
         Workload wrld = new Workload();
-
-
-
         double first3Partitions = 0.0;
         double remaining6Partitions = 0.0;
 
@@ -28,14 +23,11 @@ public class OldWorkloadSkewed {
                     Math.ceil(wrld.getDatay().get(i)));
             ArrivalRate = (float) Math.ceil(wrld.getDatay().get(i));
 
-
             first3Partitions = ArrivalRate * 0.5;
             remaining6Partitions = ArrivalRate * 0.5;
 
-
-
             //   sendToFirst 3 partitions
-            for (long j = 0; j < first3Partitions/3.0; j++) {
+            for (long j = 0; j < first3Partitions/2.0; j++) {
                 Customer custm = new Customer(rnd.nextInt(), UUID.randomUUID().toString());
                KafkaProducerExample.
                        producer.send(new ProducerRecord<String, Customer>(KafkaProducerExample.config.getTopic(),
@@ -43,16 +35,16 @@ public class OldWorkloadSkewed {
                 KafkaProducerExample.
                         producer.send(new ProducerRecord<String, Customer>(KafkaProducerExample.config.getTopic(),
                                 1, null, UUID.randomUUID().toString(), custm));
+            }
+
+            //   sendTo remaining partitions
+            for (long j = 0; j <remaining6Partitions /7.0; j++) {
+
+                Customer custm = new Customer(rnd.nextInt(), UUID.randomUUID().toString());
                 KafkaProducerExample.
                         producer.send(new ProducerRecord<String, Customer>(KafkaProducerExample.config.getTopic(),
                                 2, null, UUID.randomUUID().toString(), custm));
 
-            }
-
-
-            //   sendTo remaining partitions
-            for (long j = 0; j <remaining6Partitions /6.0; j++) {
-                Customer custm = new Customer(rnd.nextInt(), UUID.randomUUID().toString());
                 KafkaProducerExample.
                         producer.send(new ProducerRecord<String, Customer>(KafkaProducerExample.config.getTopic(),
                                 3, null, UUID.randomUUID().toString(), custm));
@@ -75,8 +67,6 @@ public class OldWorkloadSkewed {
                                 8, null, UUID.randomUUID().toString(), custm));
 
             }
-
-
             log.info("sent {} events Per Second ", Math.ceil(wrld.getDatay().get(i)));
             Thread.sleep(KafkaProducerExample.config.getDelay());
         }
