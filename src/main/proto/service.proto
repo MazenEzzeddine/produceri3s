@@ -8,7 +8,7 @@ option java_multiple_files=true;
 
 
 service ArrivalService{
-  rpc consumptionRate (ArrivalRequest) returns (ArrivalResponse) {};
+  rpc arrivalRate (ArrivalRequest) returns (ArrivalResponse) {};
 }
 
 message ArrivalResponse {

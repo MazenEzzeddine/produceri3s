@@ -5,11 +5,11 @@ import org.apache.logging.log4j.Logger;
 public class ArrivalServiceImpl extends ArrivalServiceGrpc.ArrivalServiceImplBase {
     private static final Logger log = LogManager.getLogger(ArrivalServiceImpl.class);
     @Override
-    public void consumptionRate(ArrivalRequest request, StreamObserver<ArrivalResponse> responseObserver) {
+    public void arrivalRate(ArrivalRequest request, StreamObserver<ArrivalResponse> responseObserver) {
         log.info("received new rate request {}", request.getArrivalrequest());
-        log.info("Arrival is {}", OldWorkloadSkewed.ArrivalRate );
+        log.info("Arrival is {}", OldWorkload.ArrivalRate );
         ArrivalResponse arrival = ArrivalResponse.newBuilder()
-                .setArrival(OldWorkloadSkewed.ArrivalRate)
+                .setArrival(OldWorkload.ArrivalRate)
                         .build();
 
         responseObserver.onNext(arrival);
