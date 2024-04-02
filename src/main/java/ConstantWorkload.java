@@ -12,8 +12,6 @@ import java.util.Random;
 import java.util.UUID;
 
 public class ConstantWorkload {
-
-
     static float ArrivalRate;
 
     static Instant start = Instant.now();

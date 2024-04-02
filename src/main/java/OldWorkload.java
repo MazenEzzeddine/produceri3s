@@ -150,8 +150,6 @@ public class OldWorkload {
                 minibatch--;
                 Thread.sleep((long) sleep);
             }
-
-
             if (fraction != 0) {
                 for (long j = 0; j < fraction; j++) {
                     Customer custm = new Customer(rnd.nextInt(), UUID.randomUUID().toString());
