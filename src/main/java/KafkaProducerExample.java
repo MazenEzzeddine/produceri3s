@@ -18,8 +18,7 @@ public class KafkaProducerExample {
     static KafkaProducerConfig config;
     static KafkaProducer<String, Customer> producer;
     static Random rnd;
-    static long key;
-    static int eventsPerSeconds;
+
 
     public static void main(String[] args) throws InterruptedException, IOException, URISyntaxException {
         rnd = new Random();
@@ -28,24 +27,22 @@ public class KafkaProducerExample {
         Properties props = KafkaProducerConfig.createProperties(config);
         int delay = config.getDelay();
         producer = new KafkaProducer<String, Customer>(props);
-        //log.info("Sending {} messages ...", config.getMessageCount());
+         startServer();
+        //OldWorkload.startWorkload();
+        //OldWorkload.startWorkloadUniform();
 
 
-        Instant inst = Instant.now();
+        OldWorkload.startWorkloadUniformBatch50();
 
-        while (Duration.between(inst, Instant.now()).getSeconds() < 5 * 60) {
-
-            for (int i = 0; i <250 ; i++) {
-                Customer custm = new Customer(rnd.nextInt(), UUID.randomUUID().toString());
-                KafkaProducerExample.
-                        producer.send(new ProducerRecord<String, Customer>(KafkaProducerExample.config.getTopic(),
-                                null, null, UUID.randomUUID().toString(), custm));
-
-            }
-
-            Thread.sleep(1000);
+       // OldWorkload.startWorkloadUniformBatch25();
 
 
-        }
+        // OldWorkloadSkewed.startWorkload();
+        //ConstantWorkload.startWorkload();
+    }
+
+    private static void startServer() {
+        Thread server = new Thread  (new ServerThread());
+        server.start();
     }
 }
