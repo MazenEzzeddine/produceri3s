@@ -1,3 +1,4 @@
+import io.micrometer.core.instrument.binder.kafka.KafkaClientMetrics;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.logging.log4j.LogManager;
@@ -27,7 +28,19 @@ public class KafkaProducerExample {
         Properties props = KafkaProducerConfig.createProperties(config);
         int delay = config.getDelay();
         producer = new KafkaProducer<String, Customer>(props);
-         startServer();
+
+        PrometheusUtils.initPrometheus();
+
+        KafkaClientMetrics producerKafkaMetrics = new KafkaClientMetrics(producer);
+
+        producerKafkaMetrics.bindTo(PrometheusUtils.prometheusRegistry);
+
+
+
+
+
+
+        startServer();
         OldWorkload.startWorkload();
         //OldWorkload.startWorkloadUniform();
 
