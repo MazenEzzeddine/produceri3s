@@ -28,7 +28,7 @@ public class KafkaProducerExample {
         Properties props = KafkaProducerConfig.createProperties(config);
         int delay = config.getDelay();
         producer = new KafkaProducer<String, Customer>(props);
-
+        startServer();
         PrometheusUtils.initPrometheus();
 
         KafkaClientMetrics producerKafkaMetrics = new KafkaClientMetrics(producer);
@@ -40,8 +40,10 @@ public class KafkaProducerExample {
 
 
 
-        startServer();
-        OldWorkload.startWorkload();
+        //startServer();
+
+        Work.startWorkload();
+       // OldWorkload.startWorkload();
         //OldWorkload.startWorkloadUniform();
 
 
