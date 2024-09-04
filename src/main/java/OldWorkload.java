@@ -29,6 +29,7 @@ public class OldWorkload {
                KafkaProducerExample.
                        producer.send(new ProducerRecord<String, Customer>(KafkaProducerExample.config.getTopic(),
                         null, null, UUID.randomUUID().toString(), custm));
+               //Thread.sleep(10);
             }
 
             log.info("sent {} events Per Second ", Math.ceil(wrld.getDatay().get(i)));

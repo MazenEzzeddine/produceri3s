@@ -1,45 +1,41 @@
-
-import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.time.Duration;
-import java.time.Instant;
 import java.util.Random;
 import java.util.UUID;
 
-public class ConstantWorkload {
-    static float ArrivalRate;
+public class WorkUniform {
 
-    static Instant start = Instant.now();
+
+    static float ArrivalRate;
     public static void  startWorkload() throws IOException, URISyntaxException, InterruptedException {
 
-        final Logger log = LogManager.getLogger(OldWorkload.class);
+        final Logger log = LogManager.getLogger(WorkUniform.class);
+
+        Workload wrld = new Workload();
 
         Random rnd = new Random();
-
-
-
-
-
-
         // over all the workload
-
-        while (Duration.between(start, Instant.now()).getSeconds() < 60 * 10) {
-
+        for (int i = 0; i < wrld.getDatax().size(); i++) {
+            log.info("sending a batch of authorizations of size:{}",
+                    Math.ceil(wrld.getDatay().get(i)));
+            ArrivalRate = (float) Math.ceil(wrld.getDatay().get(i));
             //   loop over each sample
-            for (long j = 0; j < 150; j++) {
+            for (long j = 0; j < Math.ceil(wrld.getDatay().get(i)); j++) {
                 Customer custm = new Customer(rnd.nextInt(), UUID.randomUUID().toString());
                 KafkaProducerExample.
                         producer.send(new ProducerRecord<String, Customer>(KafkaProducerExample.config.getTopic(),
                                 null, null, UUID.randomUUID().toString(), custm));
+                //Thread.sleep(10);
             }
 
-            log.info("sent {} events Per Second ", 150 );
+            log.info("sent {} events Per Second ", Math.ceil(wrld.getDatay().get(i)));
             Thread.sleep(KafkaProducerExample.config.getDelay());
         }
     }
+
+
 }
