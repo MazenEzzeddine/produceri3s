@@ -35,6 +35,18 @@ public class KafkaProducerExample {
 
         producerKafkaMetrics.bindTo(PrometheusUtils.prometheusRegistry);
 
+       // Worktwosine.startWorkload();
+
+       // WorktPareto.startWorkload();
+
+
+       // WorkParetoSingle.startWorkload();
+
+
+        WorkUniform.startWorkload();
+
+
+
 
 
 
@@ -42,7 +54,7 @@ public class KafkaProducerExample {
 
         //startServer();
 
-        Work.startWorkload();
+       // Work2.startWorkload();
        // OldWorkload.startWorkload();
         //OldWorkload.startWorkloadUniform();
 

@@ -28,7 +28,18 @@ public class Workload {
     }
     private void loadWorkload() throws IOException, URISyntaxException {
         ClassLoader CLDR = this.getClass().getClassLoader();
-        InputStream inputStream = CLDR.getResourceAsStream("work.csv");
+        //InputStream inputStream = CLDR.getResourceAsStream("work2.csv");
+        //InputStream inputStream = CLDR.getResourceAsStream("worktwosine.csv");
+
+
+       // InputStream inputStream = CLDR.getResourceAsStream("workpareto.csv");
+
+       // InputStream inputStream = CLDR.getResourceAsStream("workparetosingle.csv");
+        InputStream inputStream = CLDR.getResourceAsStream("uniform.csv");
+
+
+
+
 
         List<String> out = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
