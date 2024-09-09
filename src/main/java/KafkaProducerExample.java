@@ -43,7 +43,7 @@ public class KafkaProducerExample {
        // WorkParetoSingle.startWorkload();
 
 
-        WorkUniform.startWorkload();
+       // WorkUniform.startWorkload();
 
 
 
@@ -52,10 +52,10 @@ public class KafkaProducerExample {
 
 
 
-        //startServer();
+        startServer();
 
        // Work2.startWorkload();
-       // OldWorkload.startWorkload();
+        OldWorkload.startWorkload();
         //OldWorkload.startWorkloadUniform();
 
 

@@ -35,7 +35,9 @@ public class Workload {
        // InputStream inputStream = CLDR.getResourceAsStream("workpareto.csv");
 
        // InputStream inputStream = CLDR.getResourceAsStream("workparetosingle.csv");
-        InputStream inputStream = CLDR.getResourceAsStream("uniform.csv");
+        //InputStream inputStream = CLDR.getResourceAsStream("uniform.csv");
+        InputStream inputStream = CLDR.getResourceAsStream("defaultArrivalRatesm.csv");
+
 
 
 
