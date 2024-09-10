@@ -55,7 +55,7 @@ public class KafkaProducerExample {
         startServer();
 
        // Work2.startWorkload();
-        OldWorkload.startWorkload();
+        OldWorkloadSkewed2.startWorkload();
         //OldWorkload.startWorkloadUniform();
 
 
