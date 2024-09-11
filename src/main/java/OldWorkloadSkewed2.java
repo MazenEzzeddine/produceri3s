@@ -42,7 +42,7 @@ public class OldWorkloadSkewed2 {
             }
 
             //   sendTo remaining partitions
-            for (long j = 0; j <remaining2Partitions /2; j++) {
+            for (long j = 0; j <remaining2Partitions /3; j++) {
 
                 Customer custm = new Customer(rnd.nextInt(), UUID.randomUUID().toString());
 
