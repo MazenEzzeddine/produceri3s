@@ -7,9 +7,9 @@ public class ArrivalServiceImpl extends ArrivalServiceGrpc.ArrivalServiceImplBas
     @Override
     public void arrivalRate(ArrivalRequest request, StreamObserver<ArrivalResponse> responseObserver) {
         log.info("received new rate request {}", request.getArrivalrequest());
-        log.info("Arrival is {}", OldWorkloadSkewed2.ArrivalRate );
+        log.info("Arrival is {}", OldWorkload.ArrivalRate );
         ArrivalResponse arrival = ArrivalResponse.newBuilder()
-                .setArrival(OldWorkloadSkewed2.ArrivalRate)
+                .setArrival(OldWorkload.ArrivalRate)
                         .build();
 
         responseObserver.onNext(arrival);
