@@ -22,7 +22,7 @@ public class ArrivalServiceImpl extends ArrivalServiceGrpc.ArrivalServiceImplBas
 
     static int   getReplicas(){
         try (final KubernetesClient k8s = new KubernetesClientBuilder().build()) {
-            return k8s.apps().deployments().inNamespace("default").withName("workload").get().getSpec().getReplicas();
+            return k8s.apps().deployments().inNamespace("default").withName("producer-deployment").get().getSpec().getReplicas();
         }
     }
 
