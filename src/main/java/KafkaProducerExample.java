@@ -14,7 +14,6 @@ import java.util.UUID;
 
 public class KafkaProducerExample {
     private static final Logger log = LogManager.getLogger(KafkaProducerExample.class);
-    private static long iteration = 0;
 
     static KafkaProducerConfig config;
     static KafkaProducer<String, Customer> producer;
@@ -28,7 +27,7 @@ public class KafkaProducerExample {
         Properties props = KafkaProducerConfig.createProperties(config);
         int delay = config.getDelay();
         producer = new KafkaProducer<String, Customer>(props);
-        startServer();
+        //startServer();
         PrometheusUtils.initPrometheus();
 
         KafkaClientMetrics producerKafkaMetrics = new KafkaClientMetrics(producer);

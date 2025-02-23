@@ -18,7 +18,14 @@
 
 
    <dependencies>
-    <dependency>
+
+       <dependency>
+           <groupId>io.fabric8</groupId>
+           <artifactId>kubernetes-client</artifactId>
+           <version>6.7.2</version>
+       </dependency>
+
+       <dependency>
         <groupId>org.apache.kafka</groupId>
         <artifactId>kafka-clients</artifactId>
         <version>${kafka.version}</version>

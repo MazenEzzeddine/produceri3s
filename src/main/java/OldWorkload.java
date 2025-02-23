@@ -1,3 +1,5 @@
+import io.fabric8.kubernetes.client.KubernetesClient;
+import io.fabric8.kubernetes.client.KubernetesClientBuilder;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.logging.log4j.LogManager;
@@ -22,7 +24,7 @@ public class OldWorkload {
         for (int i = 0; i < wrld.getDatax().size(); i++) {
             log.info("sending a batch of authorizations of size:{}",
                     Math.ceil(wrld.getDatay().get(i)));
-            ArrivalRate = (float) Math.ceil(wrld.getDatay().get(i));
+            ArrivalRate = (float) Math.ceil(wrld.getDatay().get(i))  ;
             //   loop over each sample
             for (long j = 0; j < Math.ceil(wrld.getDatay().get(i)); j++) {
                 Customer custm = new Customer(rnd.nextInt(), UUID.randomUUID().toString());
